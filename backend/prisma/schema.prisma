@@ -10,3 +10,55 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model Survey {
+  id      Int    @id @default(autoincrement())
+  title String
+  description String?
+  createdAt DateTime @default(now())
+  questions Question[]
+  submissions Submission[]
+}
+
+model Question {
+  id Int @id @default(autoincrement())
+  surveyId Int
+  text String
+  type QuestionType
+  required Boolean @default(false)
+  options String @default("")
+  orderIndex Int
+  createdAt DateTime @default(now())
+  answers Answer[]
+  survey Survey @relation(fields: [surveyId], references: [id])
+
+  @@index([surveyId, orderIndex])
+}
+
+model Submission {
+  id Int @id @default(autoincrement())
+  surveyId Int
+  createdAt DateTime @default(now())
+  answers Answer[]
+  survey Survey @relation(fields: [surveyId], references: [id])
+}
+
+model Answer {
+  id Int @id @default(autoincrement())
+  submissionId Int
+  questionId Int
+  value String?
+  question Question @relation(fields: [questionId], references: [id])
+  submission Submission @relation(fields: [submissionId], references: [id])
+
+  @@unique([submissionId, questionId])
+}
+
+enum QuestionType {
+  TEXT
+  NUMBER
+  DATE
+  EMAIL
+  SELECT
+  MULTISELECT
+}
