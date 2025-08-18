@@ -1,6 +1,6 @@
 # SurveyApp
 
-This structure provides the foundation for Waterlily's ML model to make accurate long-term care predictions.
+A modern, full-stack survey application built with React, TypeScript, Express.js, and Prisma. Create, manage, and respond to surveys with a beautiful, responsive interface.
 
 ## 🚀 Features
 
@@ -372,20 +372,22 @@ Response:
 
 ### **What I Would Do With More Time**
 
-#### **Immediate Improvements (1-2 hours)**
+#### **Immediate Improvements**
 - **Survey Creation Interface**: Allow admins to create surveys
+- **Testing**: Unit and integration tests
+
 - **Better Error Handling**: More detailed error messages
-- **Loading States**: Better UX during API calls
+
 - **Form Persistence**: Save progress if user leaves
 
-#### **Advanced Features (3-4 hours)**
+#### **Advanced Features**
 - **User Authentication**: Secure survey access
 - **Survey Analytics**: Response analysis and reporting
 - **Export Functionality**: PDF/CSV export of responses
 - **Survey Templates**: Reusable survey structures
 
 #### **Production Readiness (5-6 hours)**
-- **Testing**: Unit and integration tests
+-
 - **Deployment**: Docker configuration
 - **Monitoring**: Error tracking and analytics
 - **Documentation**: API documentation and user guides
