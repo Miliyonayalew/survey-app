@@ -1,6 +1,6 @@
 # SurveyApp
 
-A modern, full-stack survey application built with React, TypeScript, Express.js, and Prisma. Create, manage, and respond to surveys with a beautiful, responsive interface.
+This structure provides the foundation for Waterlily's ML model to make accurate long-term care predictions.
 
 ## 🚀 Features
 
@@ -128,7 +128,7 @@ SurveyApp/
 
 5. **Start the development server:**
    ```bash
-   pnpm dev
+   npm run dev
    ```
 
    The backend will be available at `http://localhost:3001`
@@ -249,45 +249,6 @@ Response:
 - **Repositories** - Data access and database operations
 - **Middleware** - Request processing and validation
 
-## 🔧 Development
-
-### Available Scripts
-
-#### Backend
-```bash
-npm run dev       # Start development server
-npm run build     # Build for production (if script exists)
-npm run start     # Start production server (if script exists)
-npx prisma studio # Open Prisma Studio
-```
-
-#### Frontend
-```bash
-pnpm dev          # Start development server
-pnpm build        # Build for production
-pnpm preview      # Preview production build
-pnpm lint         # Run ESLint
-```
-
-### Database Management
-
-```bash
-# navigate to the backend
-cd backend
-
-# Generate Prisma client
-npx prisma generate
-
-# Run migrations
-npx prisma migrate dev
-
-# Reset database
-npx prisma migrate reset
-
-# Open Prisma Studio
-npx prisma studio
-```
-
 ## 🚀 Deployment
 
 ### Backend Deployment
@@ -299,6 +260,135 @@ npx prisma studio
 1. Build the application: `pnpm build`
 2. Deploy the `dist` folder to your preferred platform
 
+
+## Tradeoffs & Decisions
+
+
+#### **Prioritization Strategy**
+- **Backend-First**: Started with database schema, then API endpoints with robust validation
+- **Data Quality Priority**: Ensured clean, validated data before UI enhancements
+- **API Contracts**: Defined clear interfaces before frontend development
+- **Functional Demo**: Guaranteed working system even with minimal UI
+
+#### **What I Chose to Implement**
+- **Robust Backend**: Database schema, API endpoints, validation layer
+- **Data Quality**: Required field validation, data type validation, input sanitization
+- **API Contracts**: Clear, well-defined endpoints for frontend consumption
+- **Error Handling**: Comprehensive validation and error responses
+- **UX Enhancements**: Pagination, progress indicators, responsive design (after backend stability)
+
+#### **What I Skipped (and Why)**
+- **Complex Frontend Features**: Prioritized backend stability and data quality
+- **User Authentication**: Not required for assignment, adds complexity
+
+### **Technical Stack Decisions**
+
+#### **Backend-First Approach**
+- **Why Backend First**: Data quality is critical for ML model accuracy
+- **Database Schema**: Started with Prisma schema to define data structure
+- **API Endpoints**: Built robust validation before frontend development
+- **Type Safety**: Zod validation ensures data integrity
+
+#### **Frontend: React + TypeScript + Tailwind**
+- **Why React**: Familiar, fast development, large ecosystem
+- **Why TypeScript**: Type safety prevents bugs, better IDE support
+- **Why Tailwind**: Rapid UI development, consistent design system
+
+#### **Backend: Express.js + SQLite + Prisma**
+- **Why Express**: Simple, fast to set up, perfect for REST APIs
+- **Why SQLite**: Zero configuration, file-based, perfect for assignment
+- **Why Prisma**: Type-safe database operations, excellent DX
+
+#### **Additional Libraries**
+- **shadcn/ui**: Pre-built components save time, consistent design
+- **React Query**: Handles server state, caching, loading states
+- **Zod**: Type-safe validation, perfect TypeScript integration
+
+### **UX/UI Decisions**
+
+#### **Pagination vs Single Questions**
+- **Chose Pagination**: Less overwhelming, better progress tracking
+- **5 Questions per Page**: Balance between speed and cognitive load
+- **Progress Bar**: Clear completion indication
+
+#### **Form Validation Strategy**
+- **Individual Error Messages**: Better UX than bulk error list
+- **Real-time Validation**: Immediate feedback as user types
+- **Required Field Indicators**: Clear visual cues
+
+#### **Responsive Design**
+- **Mobile-First**: Most users access forms on mobile
+- **Touch-Friendly**: Large buttons, proper spacing
+- **Readable Typography**: Clear hierarchy and contrast
+
+### **Database Design**
+
+#### **Simple Schema**
+- **Survey**: Basic survey information
+- **Question**: Flexible question types with options
+- **Submission**: User responses
+- **Answer**: Individual question responses
+
+#### **Why This Structure**
+- **Flexible**: Supports multiple question types
+- **Scalable**: Easy to add new question types
+- **Simple**: Quick to implement and understand
+
+### **API Design**
+
+#### **RESTful Endpoints**
+- `GET /surveys/:id` - Get survey with questions
+- `POST /surveys/:id/submissions` - Submit responses
+- `GET /surveys/submissions/:id` - View submission
+
+#### **Why This Approach**
+- **Standard**: Familiar REST patterns
+- **Simple**: Easy to understand and test
+- **Scalable**: Easy to extend with new features
+
+### **Performance Considerations**
+
+#### **Frontend Optimization**
+- **Component Splitting**: Separate components for reusability
+- **Lazy Loading**: Only load what's needed
+- **Efficient State Management**: React Query for server state
+
+#### **Backend Optimization**
+- **Database Indexes**: Proper indexing on surveyId
+- **Validation**: Fast runtime validation with Zod
+- **Error Handling**: Comprehensive error responses
+
+### **Security Decisions**
+
+#### **Input Validation**
+- **Zod Schemas**: Runtime validation for all inputs
+- **Type Safety**: TypeScript prevents type-related bugs
+- **SQL Injection Protection**: Prisma handles parameterized queries
+
+#### **What I Didn't Implement**
+- **Authentication**: Not required for assignment
+- **Rate Limiting**: Beyond scope
+- **HTTPS**: Development environment
+
+### **What I Would Do With More Time**
+
+#### **Immediate Improvements (1-2 hours)**
+- **Survey Creation Interface**: Allow admins to create surveys
+- **Better Error Handling**: More detailed error messages
+- **Loading States**: Better UX during API calls
+- **Form Persistence**: Save progress if user leaves
+
+#### **Advanced Features (3-4 hours)**
+- **User Authentication**: Secure survey access
+- **Survey Analytics**: Response analysis and reporting
+- **Export Functionality**: PDF/CSV export of responses
+- **Survey Templates**: Reusable survey structures
+
+#### **Production Readiness (5-6 hours)**
+- **Testing**: Unit and integration tests
+- **Deployment**: Docker configuration
+- **Monitoring**: Error tracking and analytics
+- **Documentation**: API documentation and user guides
 
 ## 🔮 Future Enhancements
 
