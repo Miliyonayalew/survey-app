@@ -358,8 +358,6 @@ Response:
 - **Validation**: Fast runtime validation with Zod
 - **Error Handling**: Comprehensive error responses
 
-### **Security Decisions**
-
 #### **Input Validation**
 - **Zod Schemas**: Runtime validation for all inputs
 - **Type Safety**: TypeScript prevents type-related bugs
@@ -367,7 +365,7 @@ Response:
 
 #### **What I Didn't Implement**
 - **Authentication**: Not required for assignment
-- **Rate Limiting**: Beyond scope
+- **Rate Limiting**: Beyond scope(I was planing to add this for the get submission endpoint but due time constraint i didn't add)
 - **HTTPS**: Development environment
 
 ### **What I Would Do With More Time**
