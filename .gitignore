@@ -2,6 +2,16 @@ backend/node_modules
 backend/.env
 backend/generated/prisma
 backend/prisma/dev.db
+backend/prisma/dev.db-journal
+backend/prisma/dev.db-lock
+backend/dist
+
+# Database files
+*.db
+*.db-journal
+*.db-lock
+*.sqlite
+*.sqlite3
 
 
 # Logs
